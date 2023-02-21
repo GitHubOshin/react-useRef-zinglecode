@@ -1,14 +1,16 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import './App.css'
 
 function App() {
+  const textareaRef = useRef(null)
   const fileRef = useRef(null)
 
-  // function onFileChange(e) {
-  //   fileRef.current = e.target.files[0]
-  // }
+  function onAllTextClick(params) {
+    textareaRef.current.focus()
+    textareaRef.current.select()
+  }
 
-  function onUploadeClick(params) {
+  function onUploadeClick() {
     const myFile = fileRef.current.files[0]
     console.log(myFile)
   }
@@ -19,7 +21,12 @@ function App() {
       <div className="app-container">
         <h2>Hi</h2>
         <p>
-          {/* <input type="file" onChange={onFileChange} /> */}
+          <textarea ref={textareaRef} />
+        </p>
+        <p>
+          <button onClick={onAllTextClick}>Select all the text</button>
+        </p>
+        <p>
           <input type="file" ref={fileRef} />
         </p>
         <p>
